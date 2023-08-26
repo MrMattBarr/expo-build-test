@@ -1,13 +1,16 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
+import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
+import { Text } from '../components/Themed';
+
 import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
+import { initializeFirebase } from '../configs/firebaseConfig';
 
 export {
-  // Catch any errors thrown by the Layout component.
-  ErrorBoundary,
+  ErrorBoundary
 } from 'expo-router';
 
 export const unstable_settings = {
@@ -44,6 +47,27 @@ export default function RootLayout() {
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
+  const [firebase, setFirebase] = useState<any>();
+  const [user, setUser] = useState<any>();
+
+  useEffect(() => {
+    const app = initializeFirebase();
+    setFirebase(app);
+  }, [])
+
+  useEffect(() => {
+    if (firebase) {
+      const auth = getAuth();
+      signInAnonymously(auth)
+      onAuthStateChanged(auth, (theUser) => {
+        setUser(theUser)
+      });
+    }
+  }, [firebase])
+
+  if (!user) {
+    return <Text>WOWIE</Text>
+  }
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
