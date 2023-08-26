@@ -1,21 +1,18 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { useFonts } from "expo-font";
 import { getAuth, onAuthStateChanged, signInAnonymously } from "firebase/auth";
-import { Text } from '../components/Themed';
+import { Text } from "../components/Themed";
 
-import { SplashScreen, Stack } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { useColorScheme } from 'react-native';
-import { initializeFirebase } from '../configs/firebaseConfig';
+import { SplashScreen, Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import { useColorScheme } from "react-native";
+import { initializeFirebase } from "../configs/firebaseConfig";
 
-export {
-  ErrorBoundary
-} from 'expo-router';
+export { ErrorBoundary } from "expo-router";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: "(tabs)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -23,7 +20,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     ...FontAwesome.font,
   });
 
@@ -53,28 +50,26 @@ function RootLayoutNav() {
   useEffect(() => {
     const app = initializeFirebase();
     setFirebase(app);
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (firebase) {
       const auth = getAuth();
-      signInAnonymously(auth)
+      signInAnonymously(auth);
       onAuthStateChanged(auth, (theUser) => {
-        setUser(theUser)
+        setUser(theUser);
       });
     }
-  }, [firebase])
+  }, [firebase]);
 
   if (!user) {
-    return <Text>WOWIE</Text>
+    return <Text>WOWIE</Text>;
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-      </Stack>
-    </ThemeProvider>
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+    </Stack>
   );
 }
