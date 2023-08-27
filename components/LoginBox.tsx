@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { Image, Pressable, StyleSheet, TextInput, View } from "react-native";
 import TextMark from "./TextMark";
 import AppText from "./AppText";
-import { AppColor } from "../constants/Colors";
-import { Sizes } from "../constants/sizes";
+import { AppColor } from "@/constants/Colors";
+import { Sizes } from "@/constants/sizes";
 import Spinner from "./Spinner";
-import useColors from "../hooks/useColors";
-import useClient from "../hooks/useClient";
+import useColors from "@/hooks/useColors";
+import useClient from "@/hooks/useClient";
 
-const LoginImage = require("../assets/images/login.jpg");
-const DesktopImage = require("../assets/images/login-mobile.jpg");
+const LoginImage = require("@/assets/images/login.jpg");
+const DesktopImage = require("@/assets/images/login-mobile.jpg");
 
 const LoginBox = () => {
   const [spinning, setSpinning] = useState(false);
@@ -201,8 +201,8 @@ const generateStyles = (props?: IStyleProps) => {
       color: spinning
         ? AppColor.TRANSPARENT
         : error
-        ? AppColor.CHALK_RED
-        : AppColor.WARM_WHITE,
+          ? AppColor.CHALK_RED
+          : AppColor.WARM_WHITE,
     },
   });
 };

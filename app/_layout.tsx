@@ -6,7 +6,7 @@ import { Text } from "../components/Themed";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { useColorScheme } from "react-native";
-import { initializeFirebase } from "../configs/firebaseConfig";
+import { initializeFirebase } from "@/configs/firebaseConfig";
 
 export { ErrorBoundary } from "expo-router";
 
