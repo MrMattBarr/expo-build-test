@@ -1,4 +1,4 @@
-package com.mrmattbarr.buildTest;
+package com.mrmattbarr.Derby;
 
 import android.app.Application;
 import android.content.res.Configuration;

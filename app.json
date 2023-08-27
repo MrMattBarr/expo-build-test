@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "buildTest",
-    "slug": "buildTest",
+    "name": "Derby",
+    "slug": "Derby",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,14 +17,14 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mrmattbarr.buildTest"
+      "bundleIdentifier": "com.mrmattbarr.Derby"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mrmattbarr.buildTest"
+      "package": "com.mrmattbarr.Derby"
     },
     "web": {
       "bundler": "metro",

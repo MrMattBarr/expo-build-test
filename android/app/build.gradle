@@ -81,9 +81,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace 'com.mrmattbarr.buildTest'
+    namespace 'com.mrmattbarr.Derby'
     defaultConfig {
-        applicationId 'com.mrmattbarr.buildTest'
+        applicationId 'com.mrmattbarr.Derby'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
